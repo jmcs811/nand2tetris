@@ -1,0 +1,11 @@
+/** MUX if sel=0 then out=a else out=b */
+CHIP Mux {
+	IN a, b, sel;
+	OUT out;
+
+	PARTS:
+	Not(in=sel, out=nsel);
+	And(a=nsel, b=a , out=c2);
+	And(a=sel, b=b, out=c1);
+	Or(a=c1, b=c2 , out=out );
+}
